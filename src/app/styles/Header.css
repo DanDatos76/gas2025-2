@@ -1,0 +1,11 @@
+#search-bar{
+background-color: white;
+}
+body > div.page-layout > div > header > div.search-bar > input[type=text]{
+    background-color: white;
+
+}
+
+body > div.page-layout > div > header > div.notifications > svg{
+    color: black;
+}

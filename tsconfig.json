@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    // --- Opciones Base de Next.js (sin cambios) ---
+    "target": "es5", // 'es5' es más seguro para compatibilidad con navegadores antiguos
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true, // Buena práctica
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+
+    // --- INICIO DE LA CORRECCIÓN DE ALIAS ---
+    // 'baseUrl' le dice a TypeScript dónde empezar a buscar las rutas absolutas.
+    // Ponerlo en './' (la raíz del proyecto) es lo estándar.
+    "baseUrl": ".",
+    "paths": {
+      // Este alias le dice que cualquier cosa que empiece con '@/'
+      // debe buscarse dentro de la carpeta 'src/'.
+      // Ejemplo: '@/styles/Modal.css' se resolverá a 'src/styles/Modal.css'.
+      "@/*": ["./src/*"] 
+    }
+    // --- FIN DE LA CORRECCIÓN DE ALIAS ---
+  },
+
+  // --- INICIO DE LA CORRECCIÓN DE 'include' ---
+  // La sección 'include' le dice a TypeScript qué archivos analizar.
+  // Es mejor incluir directorios completos en lugar de archivos individuales.
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.jsx", // <-- AÑADIDO: para que reconozca tus archivos JSX
+    ".next/types/**/*.ts"
+  ],
+  // --- FIN DE LA CORRECCIÓN DE 'include' ---
+
+  "exclude": ["node_modules"]
+}
